@@ -1,0 +1,154 @@
+function iniRound(titolo, da, db, l, round) {
+
+    var c = document.createElement("div");
+    c.setAttribute("class", "poll");
+
+    var h = document.createElement("h3");
+    h.setAttribute("class", "poll__title");
+    h.classList.add("hidden");
+    h.textContent = titolo;
+
+    var br = document.createElement("ul");
+    br.setAttribute("class", "poll__row");
+    br.setAttribute("data-poll", titolo);
+
+    for (var i = 0; i < l; i++) {
+        var mc = document.createElement("li");
+        var code = titolo.replace('-', '')
+        mc.setAttribute('id', 'p' + code + (i + 1));
+
+        var m = document.createElement("ul");
+        m.setAttribute("class", "poll__match");
+
+        if (da[i]) {
+            var a = document.createElement("li");
+            a.setAttribute("class", "poll__cell");
+            a.textContent = da[i];
+            m.appendChild(a);
+        }
+
+        if (db[i]) {
+            var b = document.createElement("li");
+            b.setAttribute("class", "poll__cell");
+            b.textContent = db[i];
+            m.appendChild(b);
+        }
+        mc.appendChild(m);
+        br.appendChild(mc);
+        c.appendChild(h);
+        c.appendChild(br);
+    }
+
+    if (document.getElementById("round" + round)) {
+        var r = document.getElementById("round" + round);
+        r.setAttribute("class", "round");
+        //console.log(r);
+    } else {
+        var r = document.createElement("div");
+        r.setAttribute("id", "round" + round);
+        r.setAttribute("class", "round");
+        //console.log(r);
+    }
+    var t = document.getElementById("torneo");
+    r.appendChild(c);
+    t.appendChild(r);
+}
+
+function iniResult(titolo, da, l, poll) {
+    const c = document.querySelector('[data-poll="' + poll + '"]');
+
+    var h = document.createElement("h3");
+    h.setAttribute("class", "poll__title");
+    h.classList.add("hidden");
+    h.textContent = titolo;
+
+    var pr = document.createElement("ul");
+    pr.setAttribute("class", "poll__row " + titolo);
+    pr.setAttribute("data-poll", titolo);
+
+    for (var i = 0; i < l; i++) {
+        if (da[i]) {
+            var a = document.createElement("li");
+            a.setAttribute("class", "poll__cell");
+            var ac = document.createElement("span");
+            ac.textContent = da[i];
+            pr.appendChild(a);
+            a.appendChild(ac);
+        }
+        c.insertAdjacentElement('afterend', pr);
+        c.insertAdjacentElement('afterend', h);
+    }
+}
+
+function iniLinktMatch(codice, type) {
+
+    var clone = document.querySelector('#' + codice[0]).cloneNode(true);
+    var nm = document.querySelector('.' + type + '-match');
+    nm.querySelector('a').setAttribute('href', '#' + codice[0]);
+    clone.setAttribute('id', type + '-' + codice[0]);
+
+    document.querySelector('#' + type + '-match').appendChild(clone);
+}
+
+function iniTorneo(dataByColumn) {
+    iniRound("0-0", dataByColumn["poll 0-0 squadra A"], dataByColumn["poll 0-0 squadra B"], 8, 1);
+
+    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], dataByColumn["poll 0-1 squadra B"], 4, 2);
+    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], dataByColumn["poll 1-0 squadra B"], 4, 2);
+
+    iniRound("0-2", dataByColumn["poll 0-2 squadra A"], dataByColumn["poll 0-2 squadra B"], 2, 3);
+    iniRound("1-1", dataByColumn["poll 1-1 squadra A"], dataByColumn["poll 1-1 squadra B"], 4, 3);
+    iniRound("2-0", dataByColumn["poll 2-0 squadra A"], dataByColumn["poll 2-0 squadra B"], 2, 3);
+
+    iniResult("lose", dataByColumn["lose 1"], 2, '0-2');
+    iniRound("1-2", dataByColumn["poll 1-2 squadra A"], dataByColumn["poll 1-2 squadra B"], 3, 4);
+    iniRound("2-1", dataByColumn["poll 2-1 squadra A"], dataByColumn["poll 2-1 squadra B"], 3, 4);
+    iniResult("win", dataByColumn["win 1"], 2, '2-0');
+
+    iniResult("lose", dataByColumn["lose 2"], 2, '1-2');
+    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra B"], 3, 5);
+    iniResult("win", dataByColumn["win 2"], 2, '2-1');
+
+    iniResult("win", dataByColumn["win 3"], 2, '2-2');
+    iniResult("lose", dataByColumn["lose 3"], 2, '2-2');
+
+    iniLinktMatch(dataByColumn["partita corrente"], 'current');
+    iniLinktMatch(dataByColumn["prossima partita"], 'next');
+
+    iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra B"], 4, 6);
+    iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra B"], 2, 7);
+    iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra B"], 1, 8);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('risultati.csv')
+        .then(response => response.text())
+        .then(data => {
+            const rows = Papa.parse(data, {
+                header: true
+            }).data;
+            const columnNames = Object.keys(rows[0]);
+
+            let dataByColumn = {};
+            columnNames.forEach(columnName => {
+                dataByColumn[columnName] = [];
+            });
+
+            for (let i = 0; i < rows.length; i++) {
+                const rowData = rows[i];
+                columnNames.forEach(columnName => {
+                    let limit = 8;
+                    if (columnName.includes("poll 0-1") || columnName.includes("poll 1-0") || columnName.includes("poll 1-1")) {
+                        limit = limit / 2;
+                    } else if (columnName.includes("poll 2-0") || columnName.includes("poll 0-2")) {
+                        limit = limit / 4;
+                    }
+                    if (dataByColumn[columnName].length < limit) {
+                        dataByColumn[columnName].push(rowData[columnName]);
+                    }
+                });
+            }
+            iniTorneo(dataByColumn);
+            //console.log(dataByColumn);
+        });
+});
