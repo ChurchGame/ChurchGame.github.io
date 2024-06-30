@@ -130,9 +130,9 @@ function iniTorneo(dataByColumn) {
     iniResult("win", dataByColumn["win 1"], 2, '2-0');
 
 
-    iniResult("lose", dataByColumn["lose 2"], 2, '1-2');
+    iniResult("lose", dataByColumn["lose 2"], 4, '1-2');
     iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra A punteggio"], dataByColumn["poll 2-2 squadra B"], dataByColumn["poll 2-2 squadra B punteggio"], 3, 5);
-    iniResult("win", dataByColumn["win 2"], 2, '2-1');
+    iniResult("win", dataByColumn["win 2"], 4, '2-1');
 
     iniResult("win", dataByColumn["win 3"], 2, '2-2');
     iniResult("lose", dataByColumn["lose 3"], 2, '2-2');
