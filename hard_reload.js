@@ -1,4 +1,5 @@
 async function handleHardReload(url) {
+	await new Promise(r => setTimeout(r, 3000));
     await fetch(url, {
         headers: {
             Pragma: 'no-cache',
@@ -11,4 +12,4 @@ async function handleHardReload(url) {
     window.location.reload();
 }
 
-setTimeout(handleHardReload(window.location.href), 30000);
+handleHardReload(window.location.href)
