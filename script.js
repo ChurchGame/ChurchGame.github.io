@@ -117,8 +117,8 @@ function iniLinktMatch(codice, type) {
 function iniTorneo(dataByColumn) {
     iniRound("0-0", dataByColumn["poll 0-0 squadra A"], dataByColumn["poll 0-0 squadra A punteggio"], dataByColumn["poll 0-0 squadra B"], dataByColumn["poll 0-0 squadra B punteggio"], 8, 1);
 
-    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], '', dataByColumn["poll 0-1 squadra B"], '', 3, 2);
-    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], '', dataByColumn["poll 1-0 squadra B"], '', 5, 2);
+    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], '', dataByColumn["poll 0-1 squadra B"], '', 5, 2);
+    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], '', dataByColumn["poll 1-0 squadra B"], '', 4, 2);
 
     iniRound("0-2", dataByColumn["poll 0-2 squadra A"], '', dataByColumn["poll 0-2 squadra B"], '', 2, 3);
     iniRound("1-1", dataByColumn["poll 1-1 squadra A"], '', dataByColumn["poll 1-1 squadra B"], '', 4, 3);
