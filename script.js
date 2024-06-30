@@ -117,21 +117,21 @@ function iniLinktMatch(codice, type) {
 function iniTorneo(dataByColumn) {
     iniRound("0-0", dataByColumn["poll 0-0 squadra A"], dataByColumn["poll 0-0 squadra A punteggio"], dataByColumn["poll 0-0 squadra B"], dataByColumn["poll 0-0 squadra B punteggio"], 8, 1);
 
-    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], '', dataByColumn["poll 0-1 squadra B"], '', 4, 2);
-    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], '', dataByColumn["poll 1-0 squadra B"], '', 4, 2);
+    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], dataByColumn["poll 0-1 squadra A punteggio"], dataByColumn["poll 0-1 squadra B"], dataByColumn["poll 0-1 squadra B punteggio"], 4, 2);
+    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], dataByColumn["poll 1-0 squadra A punteggio"], dataByColumn["poll 1-0 squadra B"], dataByColumn["poll 1-0 squadra B punteggio"], 4, 2);
 
-    iniRound("0-2", dataByColumn["poll 0-2 squadra A"], '', dataByColumn["poll 0-2 squadra B"], '', 2, 3);
-    iniRound("1-1", dataByColumn["poll 1-1 squadra A"], '', dataByColumn["poll 1-1 squadra B"], '', 4, 3);
-    iniRound("2-0", dataByColumn["poll 2-0 squadra A"], '', dataByColumn["poll 2-0 squadra B"], '', 2, 3);
+    iniRound("0-2", dataByColumn["poll 0-2 squadra A"], dataByColumn["poll 0-2 squadra A punteggio"], dataByColumn["poll 0-2 squadra B"], dataByColumn["poll 0-2 squadra B punteggio"], 2, 3);
+    iniRound("1-1", dataByColumn["poll 1-1 squadra A"], dataByColumn["poll 1-1 squadra A punteggio"], dataByColumn["poll 1-1 squadra B"], dataByColumn["poll 1-1 squadra B punteggio"], 4, 3);
+    iniRound("2-0", dataByColumn["poll 2-0 squadra A"], dataByColumn["poll 2-0 squadra A punteggio"], dataByColumn["poll 2-0 squadra B"], dataByColumn["poll 2-0 squadra B punteggio"], 2, 3);
 
     iniResult("lose", dataByColumn["lose 1"], 2, '0-2');
-    iniRound("1-2", dataByColumn["poll 1-2 squadra A"], '', dataByColumn["poll 1-2 squadra B"], '', 3, 4);
-    iniRound("2-1", dataByColumn["poll 2-1 squadra A"], '', dataByColumn["poll 2-1 squadra B"], '', 3, 4);
+    iniRound("1-2", dataByColumn["poll 1-2 squadra A"], dataByColumn["poll 1-2 squadra A punteggio"], dataByColumn["poll 1-2 squadra B"], dataByColumn["poll 1-2 squadra B punteggio"], 3, 4);
+    iniRound("2-1", dataByColumn["poll 2-1 squadra A"], dataByColumn["poll 2-1 squadra A punteggio"], dataByColumn["poll 2-1 squadra B"], dataByColumn["poll 2-1 squadra B punteggio"], 3, 4);
     iniResult("win", dataByColumn["win 1"], 2, '2-0');
 
 
     iniResult("lose", dataByColumn["lose 2"], 4, '1-2');
-    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], '', dataByColumn["poll 2-2 squadra B"], '', 4, 5);
+    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra A punteggio"], dataByColumn["poll 2-2 squadra B"], dataByColumn["poll 2-2 squadra B punteggio"], 4, 5);
     iniResult("win", dataByColumn["win 2"], 4, '2-1');
 
     iniResult("win", dataByColumn["win 3"], 4, '2-2');
@@ -140,10 +140,9 @@ function iniTorneo(dataByColumn) {
     iniLinktMatch(dataByColumn["partita corrente"], 'current');
     iniLinktMatch(dataByColumn["prossima partita"], 'next');
 
-    iniRound("quarti", dataByColumn["quarti squadra A"], '', dataByColumn["quarti squadra B"], '', 4, 6);
-    iniRound("semifinali", dataByColumn["semifinali squadra A"], '', dataByColumn["semifinali squadra B"], '', 2, 7);
-    iniRound("finali", dataByColumn["finali squadra A"], '', dataByColumn["finali squadra B"], '', 1, 8);
- 
+    iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra A punteggio"], dataByColumn["quarti squadra B"], dataByColumn["quarti squadra B punteggio"], 4, 6);
+    iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra A punteggio"], dataByColumn["semifinali squadra B"], dataByColumn["semifinali squadra B punteggio"], 2, 7);
+    iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra A punteggio"], dataByColumn["finali squadra B"], dataByColumn["finali squadra B punteggio"], 1, 8);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
