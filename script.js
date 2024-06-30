@@ -130,12 +130,12 @@ function iniTorneo(dataByColumn) {
     iniResult("win", dataByColumn["win 1"], 2, '2-0');
 
 
-    iniResult("lose", dataByColumn["lose 2"], 4, '1-2');
-    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra A punteggio"], dataByColumn["poll 2-2 squadra B"], dataByColumn["poll 2-2 squadra B punteggio"], 4, 5);
-    iniResult("win", dataByColumn["win 2"], 4, '2-1');
+    iniResult("lose", dataByColumn["lose 2"], 2, '1-2');
+    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra A punteggio"], dataByColumn["poll 2-2 squadra B"], dataByColumn["poll 2-2 squadra B punteggio"], 3, 5);
+    iniResult("win", dataByColumn["win 2"], 2, '2-1');
 
-    iniResult("win", dataByColumn["win 3"], 4, '2-2');
-    iniResult("lose", dataByColumn["lose 3"], 4, '2-2');
+    iniResult("win", dataByColumn["win 3"], 2, '2-2');
+    iniResult("lose", dataByColumn["lose 3"], 2, '2-2');
 
     iniLinktMatch(dataByColumn["partita corrente"], 'current');
     iniLinktMatch(dataByColumn["prossima partita"], 'next');
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < rows.length; i++) {
                 const rowData = rows[i];
                 columnNames.forEach(columnName => {
-                    let limit = 16;
+                    let limit = 8;
                     if (columnName.includes("poll 0-1") || columnName.includes("poll 1-0") || columnName.includes("poll 1-1")) {
                         limit = limit / 2;
                     } else if (columnName.includes("poll 2-0") || columnName.includes("poll 0-2")) {
