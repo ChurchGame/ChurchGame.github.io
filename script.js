@@ -1,4 +1,4 @@
-function iniRound(titolo, da, db, l, round) {
+function iniRound(titolo, da, das, db, dbs, l, round) {
 
     var c = document.createElement("div");
     c.setAttribute("class", "poll");
@@ -17,22 +17,46 @@ function iniRound(titolo, da, db, l, round) {
         var code = titolo.replace('-', '')
         mc.setAttribute('id', 'p' + code + (i + 1));
 
-        var m = document.createElement("ul");
-        m.setAttribute("class", "poll__match");
+        if (da[i] || db[i]) {
+            var m = document.createElement("ul");
+            m.setAttribute("class", "poll__match");
+        }
 
         if (da[i]) {
             var a = document.createElement("li");
             a.setAttribute("class", "poll__cell");
-            a.textContent = da[i];
+            // a.textContent = da[i];
             m.appendChild(a);
+
+            var at = document.createElement("span");
+            at.setAttribute("class", "poll__team");
+            at.textContent = da[i];
+            a.appendChild(at);
+
+            var as = document.createElement("span");
+            as.setAttribute("class", "poll__score");
+            as.textContent = das[i];
+            a.appendChild(as);
+
         }
 
         if (db[i]) {
             var b = document.createElement("li");
             b.setAttribute("class", "poll__cell");
-            b.textContent = db[i];
+            // b.textContent = db[i];
             m.appendChild(b);
+
+            var bs = document.createElement("span");
+            bs.setAttribute("class", "poll__score");
+            bs.textContent = dbs[i];
+            b.appendChild(bs);
+
+            var bt = document.createElement("span");
+            bt.setAttribute("class", "poll__team");
+            bt.textContent = db[i];
+            b.appendChild(bt);
         }
+
         mc.appendChild(m);
         br.appendChild(mc);
         c.appendChild(h);
@@ -91,22 +115,23 @@ function iniLinktMatch(codice, type) {
 }
 
 function iniTorneo(dataByColumn) {
-    iniRound("0-0", dataByColumn["poll 0-0 squadra A"], dataByColumn["poll 0-0 squadra B"], 8, 1);
+    iniRound("0-0", dataByColumn["poll 0-0 squadra A"], dataByColumn["poll 0-0 squadra A punteggio"], dataByColumn["poll 0-0 squadra B"], dataByColumn["poll 0-0 squadra B punteggio"], 8, 1);
 
-    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], dataByColumn["poll 0-1 squadra B"], 4, 2);
-    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], dataByColumn["poll 1-0 squadra B"], 4, 2);
+    iniRound("0-1", dataByColumn["poll 0-1 squadra A"], '', dataByColumn["poll 0-1 squadra B"], '', 4, 2);
+    iniRound("1-0", dataByColumn["poll 1-0 squadra A"], '', dataByColumn["poll 1-0 squadra B"], '', 4, 2);
 
-    iniRound("0-2", dataByColumn["poll 0-2 squadra A"], dataByColumn["poll 0-2 squadra B"], 2, 3);
-    iniRound("1-1", dataByColumn["poll 1-1 squadra A"], dataByColumn["poll 1-1 squadra B"], 4, 3);
-    iniRound("2-0", dataByColumn["poll 2-0 squadra A"], dataByColumn["poll 2-0 squadra B"], 2, 3);
+    iniRound("0-2", dataByColumn["poll 0-2 squadra A"], '', dataByColumn["poll 0-2 squadra B"], '', 2, 3);
+    iniRound("1-1", dataByColumn["poll 1-1 squadra A"], '', dataByColumn["poll 1-1 squadra B"], '', 4, 3);
+    iniRound("2-0", dataByColumn["poll 2-0 squadra A"], '', dataByColumn["poll 2-0 squadra B"], '', 2, 3);
 
     iniResult("lose", dataByColumn["lose 1"], 2, '0-2');
-    iniRound("1-2", dataByColumn["poll 1-2 squadra A"], dataByColumn["poll 1-2 squadra B"], 3, 4);
-    iniRound("2-1", dataByColumn["poll 2-1 squadra A"], dataByColumn["poll 2-1 squadra B"], 3, 4);
+    iniRound("1-2", dataByColumn["poll 1-2 squadra A"], '', dataByColumn["poll 1-2 squadra B"], '', 3, 4);
+    iniRound("2-1", dataByColumn["poll 2-1 squadra A"], '', dataByColumn["poll 2-1 squadra B"], '', 3, 4);
     iniResult("win", dataByColumn["win 1"], 2, '2-0');
 
+
     iniResult("lose", dataByColumn["lose 2"], 2, '1-2');
-    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], dataByColumn["poll 2-2 squadra B"], 3, 5);
+    iniRound("2-2", dataByColumn["poll 2-2 squadra A"], '', dataByColumn["poll 2-2 squadra B"], '', 3, 5);
     iniResult("win", dataByColumn["win 2"], 2, '2-1');
 
     iniResult("win", dataByColumn["win 3"], 2, '2-2');
@@ -115,9 +140,9 @@ function iniTorneo(dataByColumn) {
     iniLinktMatch(dataByColumn["partita corrente"], 'current');
     iniLinktMatch(dataByColumn["prossima partita"], 'next');
 
-    iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra B"], 4, 6);
-    iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra B"], 2, 7);
-    iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra B"], 1, 8);
+    iniRound("quarti", dataByColumn["quarti squadra A"], '', dataByColumn["quarti squadra B"], '', 4, 6);
+    iniRound("semifinali", dataByColumn["semifinali squadra A"], '', dataByColumn["semifinali squadra B"], '', 2, 7);
+    iniRound("finali", dataByColumn["finali squadra A"], '', dataByColumn["finali squadra B"], '', 1, 8);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

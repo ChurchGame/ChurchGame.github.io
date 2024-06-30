@@ -1,3 +1,12 @@
+:root {
+    --white: #fff;
+    --blue: #358FD6;
+    --red: #E03444;
+    --yellow: #E8B34D;
+    --green: #18BA70;
+
+}
+
 body {
     width: 100%;
     margin: 0;
@@ -46,6 +55,26 @@ body {
     margin: 0 auto;
 }
 
+.current-match {
+    .btn {
+        background: var(--yellow);
+
+        &:hover {
+            // background: #256393;
+        }
+    }
+}
+
+.next-match {
+    .btn {
+        background: var(--green);
+
+        &:hover {
+            // background: #256393;
+        }
+    }
+}
+
 .current-match,
 .next-match {
 
@@ -53,10 +82,10 @@ body {
     margin: 0 auto;
 
     .btn {
-        background: #358FD6;
+        // background: #358FD6;
 
         &:hover {
-            background: #256393;
+            filter: opacity(80%);
         }
     }
 
@@ -67,13 +96,15 @@ body {
     #current-match.poll__row:before {
         content: 'Partita corrente';
         padding: 0 8px;
-        background: #358FD6;
+        background: var(--yellow);
+        color: var(--white);
     }
 
     #next-match.poll__row:before {
         content: 'Prossima partita';
         padding: 0 8px;
-        background: #358FD6;
+        background: var(--green);
+        color: var(--white);
     }
 }
 
@@ -94,11 +125,11 @@ body {
     &#round1 {
         .poll__row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 0;
 
             &:before {
-                grid-column: 1 / 5;
+                grid-column: span 2;
             }
 
             #p005 ul li:first-child {
@@ -132,7 +163,8 @@ body {
             margin-left: auto;
             flex-direction: row;
             width: 100%;
-            max-width: 400px;
+            // max-width: 400px;
+            max-width: 530px;
 
             .poll__row {
                 order: 2;
@@ -142,6 +174,7 @@ body {
 
                     .poll__cell {
                         height: unset;
+                        display: block;
                     }
                 }
             }
@@ -151,12 +184,14 @@ body {
             margin-right: auto;
             flex-direction: row;
             width: 100%;
-            max-width: 400px;
+            // max-width: 400px;
+            max-width: 530px;
 
             .poll__row {
                 &.win {
                     .poll__cell {
                         height: unset;
+                        display: block;
                     }
                 }
             }
@@ -168,7 +203,8 @@ body {
             margin-left: auto;
             flex-direction: row;
             width: 100%;
-            max-width: 400px;
+            // max-width: 400px;
+            max-width: 530px;
 
             .poll__row {
                 order: 2;
@@ -178,6 +214,7 @@ body {
 
                     .poll__cell {
                         height: unset;
+                        display: block;
                     }
                 }
             }
@@ -187,12 +224,14 @@ body {
             margin-right: auto;
             flex-direction: row;
             width: 100%;
-            max-width: 400px;
+            // max-width: 400px;
+            max-width: 530px;
 
             .poll__row {
                 &.win {
                     .poll__cell {
                         height: unset;
+                        display: block;
                     }
                 }
             }
@@ -286,6 +325,7 @@ body {
 
             .poll__cell {
                 max-width: 150px;
+                display: block;
             }
 
         }
@@ -297,6 +337,7 @@ body {
 
             .poll__cell {
                 max-width: 150px;
+                display: block;
             }
         }
 
@@ -371,11 +412,27 @@ body {
         text-align: center;
         word-break: break-all;
         letter-spacing: .1em;
-        max-width: 100px;
+        // max-width: 100px;
         width: 100%;
         height: 100%;
         display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px;
         align-items: center;
+    }
+
+    &__team {
+        max-width: 100px;
+    }
+
+    &__score {
+        min-width: 42px;
+        max-width: 50px;
+        height: 100%;
+        max-height: 30px;
+        align-content: center;
+        background-color: #000;
+        padding: 0 10px;
     }
 
     ul {
@@ -396,7 +453,7 @@ body {
 
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1445px) {
 
     .round#round3 {
         &>.poll:nth-child(1) {
@@ -432,6 +489,96 @@ body {
         }
     }
 
+}
+
+@media (max-width: 1100px) {
+    .round {
+
+        &#round3,
+        &#round4,
+        &#round5 {
+            grid-template-columns: 1fr;
+
+            .poll {
+                margin-left: auto !important;
+                margin-right: auto !important;
+
+                &__row.lose {
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
+
+                &__row.win {
+                    margin-left: auto !important;
+                    margin-right: auto !important;
+                }
+            }
+        }
+
+        &#round3 {
+            &>.poll:first-child {
+                // order: 3;
+            }
+
+            &>.poll:nth-child(2) {
+                justify-content: center;
+                grid-column: unset;
+                // order: 2;
+            }
+
+            &>.poll:nth-child(3) {
+                justify-content: center;
+                // order: 1;
+            }
+        }
+
+        &#round4 {
+            grid-template-columns: 1fr;
+
+            // &>.poll:nth-child(2),
+            // &>.poll:nth-child(3) {
+            //     grid-column: span 2;
+            //     justify-content: center;
+            // }
+
+            &>.poll:nth-child(1) {
+                flex-direction: column;
+                width: unset;
+                max-width: unset;
+
+                .poll__row {
+                    order: unset;
+
+                    &.lose {
+                        order: unset;
+
+                        .poll__cell {
+                            height: unset;
+                        }
+                    }
+                }
+            }
+
+            &>.poll:nth-child(2) {
+                flex-direction: column;
+                width: unset;
+                max-width: unset;
+
+                .poll__row {
+                    &.win {
+                        .poll__cell {
+                            height: unset;
+                        }
+                    }
+                }
+            }
+        }
+
+        &#round5 {
+            grid-template-columns: 1fr;
+        }
+
+    }
 }
 
 @media (max-width: 1010px) {
@@ -485,7 +632,7 @@ body {
     }
 }
 
-@media (max-width: 7800px) {
+@media (max-width: 1080px) {
     .nav {
 
         &-item:nth-child(2),
@@ -495,49 +642,27 @@ body {
     }
 
     .round {
-        &#round3 {
-            grid-template-columns: 1fr 1fr;
+        // &#round3 {
+        //     grid-template-columns: 1fr 1fr;
 
-            &>.poll:nth-child(2) {
-                order: 3;
-                grid-column: span 2;
-            }
+        //     &>.poll:nth-child(2) {
+        //         order: 2;
+        //         grid-column: span 2;
+        //     }
 
-            &>.poll:nth-child(3) {
-                order: 2;
-            }
-        }
+        //     &>.poll:nth-child(2) {
+        //         order: 2;
+        //         grid-column: span 2;
+        //     }
 
-        &#round4 {
-            //grid-template-columns: 1fr 1fr;
-
-
-            &>.poll:nth-child(2) {
-                //order: 1;
-                //justify-content: end;
-            }
-
-            &>.poll:nth-child(3) {
-                //order: 2;
-                //justify-content: start;
-            }
-
-            /*
-            .lose {
-                justify-content: start;
-                margin-bottom: 50px;
-            }
-            .win {
-                justify-content: end;
-                margin-bottom: 50px;
-            }
-            margin-top: -203px;
-*/
-        }
+        //     &>.poll:nth-child(3) {
+        //         order: 2;
+        //     }
+        // }
     }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 745px) {
     .nav {
         &-item:nth-child(2) {
             text-align: left;
@@ -563,7 +688,7 @@ body {
 
 }
 
-@media (max-width: 425px) {
+@media (max-width: 745px) {
     .round {
 
         &#round2,
@@ -585,6 +710,12 @@ body {
                     margin-left: auto !important;
                     margin-right: auto !important;
                 }
+            }
+        }
+
+        &#round2 {
+            .poll:first-child {
+                order: 2;
             }
         }
 
@@ -613,18 +744,5 @@ body {
             grid-template-columns: 1fr;
         }
 
-        /*
-        &#round4 {
-            .lose {
-                justify-content: start;
-                margin-bottom: 50px;
-            }
-            .win {
-                justify-content: end;
-                margin-bottom: 50px;
-            }
-            margin-top: -203px;
-        }
-        */
     }
 }
