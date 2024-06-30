@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             for (let i = 0; i < rows.length; i++) {
                 const rowData = rows[i];
                 columnNames.forEach(columnName => {
-                    let limit = 8;
+                    let limit = 16;
                     if (columnName.includes("poll 0-1") || columnName.includes("poll 1-0") || columnName.includes("poll 1-1")) {
                         limit = limit / 2;
                     } else if (columnName.includes("poll 2-0") || columnName.includes("poll 0-2")) {
