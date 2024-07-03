@@ -267,7 +267,9 @@ body {
 
     }
 
-    &#round6 {
+    &#round6,
+	&#round7,
+	&#round8	{
         margin-top: 200px;
 
         .poll__row {
@@ -674,6 +676,8 @@ body {
     }
 
     .round#round6,
+	.round#round7,
+	.round#round8,
     .round#round1 {
         .poll__row {
             display: grid;
