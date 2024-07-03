@@ -137,15 +137,15 @@ function iniTorneo(dataByColumn) {
     iniResult("win", dataByColumn["win 3"], 4, '2-2');
     iniResult("lose", dataByColumn["lose 3"], 4, '2-2');
 
-    iniRound("semifinali road to 13", dataByColumn["semifinali r13 squadra A"], dataByColumn["semifinali r13 squadra A punteggio"], dataByColumn["semifinali r13 squadra B"], dataByColumn["semifinali r13 squadra B punteggio"], 2, 7);
-    iniRound("finali road to 13", dataByColumn["finali r13 squadra A"], dataByColumn["finali r13 squadra A punteggio"], dataByColumn["finali r13 squadra B"], dataByColumn["finali r13 squadra B punteggio"], 1, 7);
+    iniRound("semifinali road to 13", dataByColumn["semifinali r13 squadra A"], dataByColumn["semifinali r13 squadra A punteggio"], dataByColumn["semifinali r13 squadra B"], dataByColumn["semifinali r13 squadra B punteggio"], 2, 6);
+    iniRound("finali road to 13", dataByColumn["finali r13 squadra A"], dataByColumn["finali r13 squadra A punteggio"], dataByColumn["finali r13 squadra B"], dataByColumn["finali r13 squadra B punteggio"], 1, 6);
 	
-	iniRound("semifinali road to 9", dataByColumn["semifinali r9 squadra A"], dataByColumn["semifinali r9 squadra A punteggio"], dataByColumn["semifinali r9 squadra B"], dataByColumn["semifinali r9 squadra B punteggio"], 2, 8);
-    iniRound("finali road to 9", dataByColumn["finali r9 squadra A"], dataByColumn["finali r9 squadra A punteggio"], dataByColumn["finali r9 squadra B"], dataByColumn["finali r9 squadra B punteggio"], 1, 8);
+	iniRound("semifinali road to 9", dataByColumn["semifinali r9 squadra A"], dataByColumn["semifinali r9 squadra A punteggio"], dataByColumn["semifinali r9 squadra B"], dataByColumn["semifinali r9 squadra B punteggio"], 2, 7);
+    iniRound("finali road to 9", dataByColumn["finali r9 squadra A"], dataByColumn["finali r9 squadra A punteggio"], dataByColumn["finali r9 squadra B"], dataByColumn["finali r9 squadra B punteggio"], 1, 7);
 
-    iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra A punteggio"], dataByColumn["quarti squadra B"], dataByColumn["quarti squadra B punteggio"], 4, 9);
-    iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra A punteggio"], dataByColumn["semifinali squadra B"], dataByColumn["semifinali squadra B punteggio"], 2, 9);
-    iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra A punteggio"], dataByColumn["finali squadra B"], dataByColumn["finali squadra B punteggio"], 1, 9);
+    iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra A punteggio"], dataByColumn["quarti squadra B"], dataByColumn["quarti squadra B punteggio"], 4, 8);
+    iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra A punteggio"], dataByColumn["semifinali squadra B"], dataByColumn["semifinali squadra B punteggio"], 2, 8);
+    iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra A punteggio"], dataByColumn["finali squadra B"], dataByColumn["finali squadra B punteggio"], 1, 8);
 	
 	iniLinktMatch(dataByColumn["partita corrente"], 'current');
     iniLinktMatch(dataByColumn["prossima partita"], 'next');
