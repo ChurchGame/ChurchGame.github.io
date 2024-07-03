@@ -146,9 +146,7 @@ function iniTorneo(dataByColumn) {
     iniRound("quarti", dataByColumn["quarti squadra A"], dataByColumn["quarti squadra A punteggio"], dataByColumn["quarti squadra B"], dataByColumn["quarti squadra B punteggio"], 4, 10);
     iniRound("semifinali", dataByColumn["semifinali squadra A"], dataByColumn["semifinali squadra A punteggio"], dataByColumn["semifinali squadra B"], dataByColumn["semifinali squadra B punteggio"], 2, 10);
     iniRound("finali", dataByColumn["finali squadra A"], dataByColumn["finali squadra A punteggio"], dataByColumn["finali squadra B"], dataByColumn["finali squadra B punteggio"], 1, 11);
-	
-	iniLinktMatch(dataByColumn["partita corrente"], 'current');
-    iniLinktMatch(dataByColumn["prossima partita"], 'next');
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
