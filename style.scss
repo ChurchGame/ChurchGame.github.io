@@ -271,7 +271,7 @@ body {
         margin-top: 200px;
 
         .poll__row {
-            display: grid;
+            display: flex;
             gap: 0;
 
             &:before {
